@@ -10,6 +10,20 @@ Create and run programmable Spotify playlists with a web-based editor and a Pyth
 - **Services:** Redis 3+ (for auth/session/program storage)
 - **Optional:** Nginx (for reverse proxy in production)
 
+### Windows 10/11 notes
+Running locally on Windows is possible but requires a Python 2.7 runtime and Redis. The easiest path is:
+1. **Use WSL2 (recommended):** Install Ubuntu via WSL2 and follow the Linux instructions above inside the WSL shell.
+2. **Or run natively on Windows (legacy):**
+   - Install Python 2.7 and ensure `python` is on your PATH.
+   - Install Redis for Windows (e.g., via WSL2 or a compatible Windows build).
+   - Use PowerShell equivalents of the commands below:
+     ```powershell
+     $env:SPOTIPY_CLIENT_ID="..."
+     $env:SPOTIPY_CLIENT_SECRET="..."
+     $env:SPOTIPY_REDIRECT_URI="http://localhost:8000/auth.html"
+     ```
+   - Start Redis, then run the same `server/start_debug_server` and `python -m SimpleHTTPServer 8000` commands from PowerShell or Git Bash.
+
 ### Start the service
 1. **Export required Spotify credentials** (used by `server/spotify_auth.py`):
    ```bash
